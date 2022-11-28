@@ -52,7 +52,7 @@ public class AjouterVille extends HttpServlet {
 		villeDaoImpl.createVille(villeAjoutee);
 		
 		ArrayList<Ville> ville = villeDaoImpl.findVilleByCodeCommune(codeCommune);
-		request.setAttribute("villeModif", ville.get(0));
+		request.setAttribute("villeAjout", ville.get(0));
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/villeAjoutee.jsp").forward(request, response);
 	}

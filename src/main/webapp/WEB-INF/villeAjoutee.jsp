@@ -18,7 +18,7 @@
           <div class="hero-body">
               <div class="container">
               	<p class="Title has-text-centered" style="font-size: 24px">
-					<strong>La ville  suivante : <c:out value="${ ville.getNomCommune()}"></c:out></strong>
+					<strong>La ville  suivante : <c:out value="${ villeAjout.getNomCommune()}"></c:out></strong>
 				</p>
 				<p class="Title has-text-centered" style="font-size: 24px">
 					<strong>A bien été ajoutée dans la base de données, voici ses informations : </strong>
@@ -44,13 +44,13 @@
 			</thead>
 			<tbody>
 					<tr>
-						<td><c:out value="${ villeModif.getNomCommune() }"></c:out></td>
-						<td><c:out value="${ villeModif.getCodeCommune() }"></c:out></td>
-						<td><c:out value="${ villeModif.getCodePostal() }"></c:out></td>
-						<td><c:out value="${ villeModif.getLibelleAcheminement() }"></c:out></td>
-						<td><c:out value="${ villeModif.getLigne5() }"></c:out></td>
-						<td><c:out value="${ villeModif.getCoordonnee().getLatitude() }"></c:out></td>
-						<td><c:out value="${ villeModif.getCoordonnee().getLongitude() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getNomCommune() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getCodeCommune() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getCodePostal() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getLibelleAcheminement() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getLigne5() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getCoordonnee().getLatitude() }"></c:out></td>
+						<td><c:out value="${ villeAjout.getCoordonnee().getLongitude() }"></c:out></td>
 					</tr>
 			</tbody>
 		</table>
