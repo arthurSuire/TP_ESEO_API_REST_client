@@ -76,17 +76,17 @@ public class VilleDaoImpl implements VilleDao{
 		try {
 			   CloseableHttpClient httpClient = HttpClients.createDefault();
 			   
-			   String requestBody = "{\n"
-			   			+ "	\"nomCommune\": \""+ville.getNomCommune()+"\",\n"
-				   		+ "	\"codeCommune\": \""+ville.getCodeCommune()+"\",\n"
-				   		+ "	\"codePostal\": \""+ville.getCodePostal()+"\",\n"
-				   		+ "	\"ligne5\": \""+ville.getLigne5()+"\",\n"
-				   		+ "	\"libelleAcheminement\": \""+ville.getLibelleAcheminement()+"\",\n"
-				   		+ "	\"coordonne\":{\n"
-				   		+ "		\"longitude\": \""+ville.getCoordonnee().getLongitude()+"\",\n"
-				   		+ "		\"latitude\": \""+ville.getCoordonnee().getLatitude()+"\"\n"
-				   		+ "		}"
-				   		+ "	}";
+				String requestBody = "{\r\n"
+						+ "    \"codeCommune\": \""+ville.getCodeCommune()+"\",\r\n"
+						+ "    \"nomCommune\": \""+ville.getNomCommune()+"\",\r\n"
+						+ "    \"codePostal\": \""+ville.getCodePostal()+"\",\r\n"
+						+ "    \"libelleAcheminement\": \""+ville.getLibelleAcheminement()+"\",\r\n"
+						+ "    \"ligne5\": \""+ville.getLigne5()+"\",\r\n"
+						+ "    \"coordonnee\": {\r\n"
+						+ "        \"latitude\" : \""+ville.getCoordonnee().getLatitude()+"\",\r\n"
+						+ "        \"longitude\" : \""+ville.getCoordonnee().getLongitude()+"\"\r\n"
+						+ "    }\r\n"
+						+ "}";
 			   
 			   StringEntity stringEntity = new StringEntity(requestBody);
 			   HttpPost httpPost = new HttpPost();
@@ -94,7 +94,6 @@ public class VilleDaoImpl implements VilleDao{
 			   httpPost.addHeader("Content-type", "application/json");
 			   httpPost.setEntity(stringEntity);
 			   CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
-			   System.out.println("Status Code - " + httpResponse.getStatusLine().toString());
 			  } catch (URISyntaxException e) {
 			   e.printStackTrace();
 			  } catch (UnsupportedEncodingException e) {
@@ -104,26 +103,23 @@ public class VilleDaoImpl implements VilleDao{
 			  } catch (IOException e) {
 			   e.printStackTrace();
 			  }
-		
 	}
 
 	@Override
 	public void modifyVille(Ville ville) throws InterruptedException, IOException, URISyntaxException {		   
 		String uri = "http://localhost:8181/modifier_ville";	
 		
-		String requestBody = "{\n"
-			   		+ "		\"nomCommune\": \""+ville.getNomCommune()+"\",\n"
-			   		+ "		\"codeCommune\": \""+ville.getCodeCommune()+"\",\n"
-			   		+ "		\"codePostal\": \""+ville.getCodePostal()+"\",\n"
-			   		+ "		\"ligne5\": \""+ville.getLigne5()+"\",\n"
-			   		+ "		\"libelleAcheminement\": \""+ville.getLibelleAcheminement()+"\",\n"
-			   		+ "		\"coordonne\":{\n"
-			   		+ "			\"longitude\": \""+ville.getCoordonnee().getLongitude()+"\",\n"
-			   		+ "			\"latitude\": \""+ville.getCoordonnee().getLatitude()+"\"\n"
-			   		+ "		}"
-			   		+ "	}";
-		
-			System.out.println(requestBody);
+		String requestBody = "{\r\n"
+				+ "    \"codeCommune\": \""+ville.getCodeCommune()+"\",\r\n"
+				+ "    \"nomCommune\": \""+ville.getNomCommune()+"\",\r\n"
+				+ "    \"codePostal\": \""+ville.getCodePostal()+"\",\r\n"
+				+ "    \"libelleAcheminement\": \""+ville.getLibelleAcheminement()+"\",\r\n"
+				+ "    \"ligne5\": \""+ville.getLigne5()+"\",\r\n"
+				+ "    \"coordonnee\": {\r\n"
+				+ "        \"latitude\" : \""+ville.getCoordonnee().getLatitude()+"\",\r\n"
+				+ "        \"longitude\" : \""+ville.getCoordonnee().getLongitude()+"\"\r\n"
+				+ "    }\r\n"
+				+ "}";
 			   
 		var request = HttpRequest.newBuilder()
 		   .uri(new URI(uri))
@@ -134,9 +130,6 @@ public class VilleDaoImpl implements VilleDao{
 		var client = HttpClient.newHttpClient();
    
 		var response = client.send(request, HttpResponse.BodyHandlers.ofString());	   
-   
-		System.out.println(response.statusCode());
-		System.out.println(response.body());
 	}
 
 	@Override

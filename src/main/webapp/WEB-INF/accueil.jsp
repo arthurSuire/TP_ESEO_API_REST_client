@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Accueil</title>
+        <script src="https://kit.fontawesome.com/5d604ee4ae.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+        <script type='text/javascript' src='https://s3.amazonaws.com/dynatable-docs-assets/js/jquery.dynatable.js'></script>
         <link rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 		<link rel="stylesheet"
@@ -56,6 +59,42 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<script>
+			$(document).ready(function() {
+				$('#table_villes').dynatable({
+				    features: {
+				        paginate: true,
+				        sort: true,
+				        pushState: true,
+				        search: true,
+				        recordCount: true,
+				        perPageSelect: true
+				    },
+				    dataset: {
+				        perPageDefault: 50,
+				        perPageOptions: [5, 10, 25, 50, 100]
+				    },
+				    inputs: {
+				        paginationNext: ">>",
+				        paginationPrev: "<<",
+				        pageText: "Page",
+				        recordCountText: "Communes",
+				        searchText: "Rechercher : ",
+				        perPageText: "Pagination : ",
+				        recordCountPageBoundTemplate: "{pageLowerBound} à {pageUpperBound} sur un total de"
+				    },
+				    params:{
+				        records: "communes"
+				    }
+				});
+				var styleSearch = "border: 2px solid goldenrod; border-radius: 3px;";
+				var styleActive = "background: goldenrod;";
+				document.getElementById('dynatable-query-search-tableCommune').setAttribute('style', styleSearch);
+				document.getElementsByClassName('dynatable-active-page').setAttribute('style',styleActive);
+			});
+		</script>
+		
     </body>
 	<%@include file="footer.jsp"%>
 </html>
